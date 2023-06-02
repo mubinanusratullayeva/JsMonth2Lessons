@@ -5,16 +5,19 @@ let users = [
         Name: 'User',
         sureName: 'Mtr User',
         age: 14,
+        gender: 'male'
     },
     {
         Name: 'User',
         sureName: 'Ms User',
         age: 14,
+        gender: 'female'
     },
     {
         Name: 'User',
         sureName: 'Mtr User',
         age: 14,
+        gender: 'male'
     },
 ]
 
@@ -84,3 +87,79 @@ console.log(chai);
 let smtht = arr.reverse();
 
 console.log(smtht);
+
+
+//FIND & FINDiNDEX
+//birinchi shartga tushganini oladi va to'xtaydi
+
+let array = [1,2,3,4,5,6,7,8,9]
+
+let found = array.find(function(element){
+    if (element == 7) {
+        return true
+    }
+})
+
+console.log(found);
+
+
+
+
+let result = users.findIndex((item) => {
+    if (item.gender === 'male') {
+        return true
+    }
+})
+
+console.log(result);
+
+
+
+// EVENTDELEGATION
+
+let wrapper = document.querySelector('.wrapper')
+
+wrapper.addEventListener('click', (e) => {
+    let target = e.target;
+
+    // if (target.tagName == 'LI') {
+    //     // target.style.backgroundColor = 'pink'
+    //     // // console.log('work');
+    //     // // target.remove()
+    // }else{
+    //     console.log('Bu li emas');
+    // }
+
+    if (target.tagName == 'LI' && target.dataset.elementId === '3') {
+        target.remove()
+    }else{
+        console.log(target);
+    }
+
+    // if (target.tagName == 'LI') {
+    //     console.log('Bu li');
+    // }else{
+    //     console.log('Bu li emas');
+    // }
+
+})
+
+
+//DATASET
+
+const myDiv = document.querySelector('#myDiv');
+console.log(myDiv.dataset.name); // John
+console.log(myDiv.dataset.age); // 25
+console.log(myDiv.dataset.city); // New York
+
+
+
+//SLICE(), SPLICE()
+
+let resulty = array.slice(2, 7)
+
+console.log(resulty);
+
+array.splice(3, 2, 23, 45, 23)
+
+console.log(array);
