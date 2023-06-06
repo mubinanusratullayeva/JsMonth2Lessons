@@ -163,3 +163,43 @@ console.log(resulty);
 array.splice(3, 2, 23, 45, 23)
 
 console.log(array);
+
+
+
+//LOCALSTORAGE
+
+let text = document.querySelector('.text')
+let btn = document.querySelector('.btn')
+
+// let count = 0
+
+// text.textContent = count
+
+// btn.addEventListener('click', () => {
+//     count++
+
+//     text.textContent = count
+
+// })
+
+
+let score = localStorage.getItem("number")
+
+// console.log(score);
+
+if(score){
+    text.textContent = score
+}else{
+    text.textContent = 0
+}
+
+btn.addEventListener('click', () => {
+score++
+text.textContent = score
+
+    localStorage.setItem('number', score)
+})
+
+console.log(Number(score));
+
+
