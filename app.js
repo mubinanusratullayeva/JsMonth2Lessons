@@ -117,32 +117,32 @@ console.log(result);
 
 // EVENTDELEGATION
 
-let wrapper = document.querySelector('.wrapper')
+// let wrapper = document.querySelector('.wrapper')
 
-wrapper.addEventListener('click', (e) => {
-    let target = e.target;
+// wrapper.addEventListener('click', (e) => {
+//     let target = e.target;
 
-    // if (target.tagName == 'LI') {
-    //     // target.style.backgroundColor = 'pink'
-    //     // // console.log('work');
-    //     // // target.remove()
-    // }else{
-    //     console.log('Bu li emas');
-    // }
+//     // if (target.tagName == 'LI') {
+//     //     // target.style.backgroundColor = 'pink'
+//     //     // // console.log('work');
+//     //     // // target.remove()
+//     // }else{
+//     //     console.log('Bu li emas');
+//     // }
 
-    if (target.tagName == 'LI' && target.dataset.elementId === '3') {
-        target.remove()
-    }else{
-        console.log(target);
-    }
+//     if (target.tagName == 'LI' && target.dataset.elementId === '3') {
+//         target.remove()
+//     }else{
+//         console.log(target);
+//     }
 
-    // if (target.tagName == 'LI') {
-    //     console.log('Bu li');
-    // }else{
-    //     console.log('Bu li emas');
-    // }
+//     // if (target.tagName == 'LI') {
+//     //     console.log('Bu li');
+//     // }else{
+//     //     console.log('Bu li emas');
+//     // }
 
-})
+// })
 
 
 //DATASET
@@ -203,3 +203,78 @@ text.textContent = score
 console.log(Number(score));
 
 
+//SYNCHRONOUS & ASYNCHRONOUS
+console.log('SYNCHRONOUS & ASYNCHRONOUS');
+console.log(1);
+let num = setTimeout(()=>{
+    console.log(2);
+}, 0)
+num
+console.log(3);
+console.log(4);
+
+
+//callback hell
+console.log('callBack hell');
+// a(function (resultA) {
+//     b(resultA, function (resultB) {
+//         c(resultB, function (resultC) {
+//             d(resultC, function (resultD) {
+//                 console.log(resultD);
+//             })
+//         })
+//     })
+// })
+
+
+function calculator(FirstNum, SecondNum, ThirdFuntion) {
+    let result = FirstNum + SecondNum
+
+    ThirdFuntion(result)
+}
+
+calculator(2, 3, function(NotClear){
+    console.log(NotClear);
+
+    calculator(3, 7, function(SecondNCRes){
+        console.log(SecondNCRes);
+    })
+
+    calculator(5,6, function (Smth) {
+        console.log(Smth);
+    })
+})
+
+
+//PROMISE
+
+console.log('PROMISE');
+
+let resultPromise = new Promise((resolve, reject)=>{
+    resolve('everything is ok')
+})
+
+resultPromise.then((result)=>{
+    console.log(result);
+}).catch((err)=> {
+    console.log(err);
+})
+
+
+//FETCH
+console.log('FETCH');
+
+let baseUrl = "https://jsonplaceholder.typicode.com";
+
+fetch(`${baseUrl}/users`,{
+    headers: {
+        authorized: "some token",
+    }
+})
+.then(res => res.json())
+.then((data) => {
+    console.log(data);
+})
+.catch((err)=>{
+    console.log(err);
+})
