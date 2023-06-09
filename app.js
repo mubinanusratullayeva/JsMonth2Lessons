@@ -247,6 +247,7 @@ calculator(2, 3, function(NotClear){
 
 
 //PROMISE
+//type of the promise is a class
 
 console.log('PROMISE');
 
@@ -261,20 +262,63 @@ resultPromise.then((result)=>{
 })
 
 
+//promise callBack hell ni oldini oladi
+
+let somePromise = new Promise((resolve, reject) => {
+    resolve("ok")
+})
+
+somePromise
+  .then(() => {
+    let res;
+    calculator(1,2, (result) => {
+        res = result
+    });
+    console.log(res);
+    return res
+})
+.then((data) => {
+    let res;
+    calculator(data,5, (result) => {
+        res = result
+    });
+    console.log(res);
+    return res
+})
+
+
+
 //FETCH
 console.log('FETCH');
 
 let baseUrl = "https://jsonplaceholder.typicode.com";
 
-fetch(`${baseUrl}/users`,{
-    headers: {
-        authorized: "some token",
-    }
-})
+let objectUl = document.querySelector('.object')
+
+fetch(`${baseUrl}/posts`)
 .then(res => res.json())
 .then((data) => {
-    console.log(data);
+    data.forEach(item => {
+        let childLi = document.createElement('li')
+        childLi.textContent = item.body
+        childLi.style.padding = '10px'
+        childLi.style.border = '1px solid brown'
+        objectUl.append(childLi)
+    })
 })
 .catch((err)=>{
     console.log(err);
 })
+
+//async await
+//promise hell ni oldini oladi
+//async asynchrone function ga aylandi
+//JSONplaceholder is a server
+
+async function getPosts(){
+    let response = await fetch(`${baseUrl}/posts`);
+    let data = await response.json();
+    console.log(data);
+}
+
+getPosts();
