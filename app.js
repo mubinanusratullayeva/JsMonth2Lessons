@@ -10,7 +10,7 @@ let users = [
     {
         Name: 'User',
         sureName: 'Ms User',
-        age: 14,
+        age: 11,
         gender: 'female'
     },
     {
@@ -39,22 +39,22 @@ console.log(male);
 
 
 // EVERY()
-
+console.log('EVERY()');
 let foo = users.every((item) => item.age < 15)
 
 console.log(foo);
 
 //SOME()
-
+console.log('SOME()');
 let bar = users.some(function (item){
-    return item.age > 19
+    return item.age > 13
 })
 
 console.log(bar);
 
 
 //FILTER()
-
+console.log('FILTER()');
 let arr = [2, -1, -5, 56, 990, 0, -34]
 
 console.log(arr);
@@ -70,9 +70,10 @@ console.log(ree);
 
 
 //SORT()
-
+console.log('SORT()');
+arr.sort();
+console.log(arr);
 let smth = arr.sort((a, b) => console.log(b,a))
-console.log('smth');
 let smths = arr.sort((a, b) => console.log(a,b))
 
 let chai = arr.sort((x,y) => x - y)
@@ -83,7 +84,7 @@ console.log(chai);
 //REVERSE()
 //teskarisiga o'girib beradi
 
-
+console.log('REVERSE()');
 let smtht = arr.reverse();
 
 console.log(smtht);
@@ -93,9 +94,9 @@ console.log(smtht);
 //birinchi shartga tushganini oladi va to'xtaydi
 
 let array = [1,2,3,4,5,6,7,8,9]
-
+console.log('FIND()');
 let found = array.find(function(element){
-    if (element == 7) {
+    if (element > 2) {
         return true
     }
 })
@@ -104,7 +105,7 @@ console.log(found);
 
 
 
-
+console.log('FINDINDEX()');
 let result = users.findIndex((item) => {
     if (item.gender === 'male') {
         return true
@@ -155,11 +156,12 @@ console.log(myDiv.dataset.city); // New York
 
 
 //SLICE(), SPLICE()
-
+console.log('SLICE()');
 let resulty = array.slice(2, 7)
 
 console.log(resulty);
 
+console.log('SPLICE()');
 array.splice(3, 2, 23, 45, 23)
 
 console.log(array);
@@ -285,7 +287,7 @@ somePromise
     console.log(res);
     return res
 })
-
+.catch(err => console.log(err))
 
 
 //FETCH
@@ -314,7 +316,7 @@ fetch(`${baseUrl}/posts`)
 //promise hell ni oldini oladi
 //async asynchrone function ga aylandi
 //JSONplaceholder is a server
-
+console.log('ASYNC & AWAIT');
 async function getPosts(){
     let response = await fetch(`${baseUrl}/posts`);
     let data = await response.json();
