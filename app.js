@@ -209,7 +209,7 @@ console.log(Number(score));
 console.log('SYNCHRONOUS & ASYNCHRONOUS');
 console.log(1);
 let num = setTimeout(()=>{
-    console.log(2);
+    console.log(`acynchrone number: ${2}`);
 }, 0)
 num
 console.log(3);
@@ -293,34 +293,136 @@ somePromise
 //FETCH
 console.log('FETCH');
 
-let baseUrl = "https://jsonplaceholder.typicode.com";
+// let baseUrl = "https://jsonplaceholder.typicode.com";
 
-let objectUl = document.querySelector('.object')
+// let objectUl = document.querySelector('.object')
 
-fetch(`${baseUrl}/posts`)
-.then(res => res.json())
-.then((data) => {
-    data.forEach(item => {
-        let childLi = document.createElement('li')
-        childLi.textContent = item.body
-        childLi.style.padding = '10px'
-        childLi.style.border = '1px solid brown'
-        objectUl.append(childLi)
-    })
-})
-.catch((err)=>{
-    console.log(err);
-})
+// fetch(`${baseUrl}/posts`)
+// .then(res => res.json())
+// .then((data) => {
+//     data.forEach(item => {
+//         let childLi = document.createElement('li')
+//         childLi.textContent = item.body
+//         childLi.style.padding = '10px'
+//         childLi.style.border = '1px solid brown'
+//         objectUl.append(childLi)
+//     })
+// })
+// .catch((err)=>{
+//     console.log(err);
+// })
 
 //async await
 //promise hell ni oldini oladi
 //async asynchrone function ga aylandi
 //JSONplaceholder is a server
 console.log('ASYNC & AWAIT');
-async function getPosts(){
-    let response = await fetch(`${baseUrl}/posts`);
-    let data = await response.json();
-    console.log(data);
+// async function getPosts(){
+//     let response = await fetch(`${baseUrl}/posts`);
+//     let data = await response.json();
+//     console.log(data);
+// }
+
+// getPosts();
+
+//SETTIMEOUT
+
+// console.log('setTimeout()');
+
+// setTimeout(function(){
+//     console.log('Hello World');
+// }, 3000)
+
+// //SETINTERVAL
+
+// let buz = 0
+
+// setInterval(() => {
+//     // buz++
+//     // console.log(buz);
+// }, 1000)
+
+// //clearTimeout()
+// //setTimeout ni o'chirish uchun ishlatiladi
+// console.log('clearTimeout()');
+
+// let setKey = setTimeout(() => {'clear string'}, 1000)
+
+// clearTimeout(setKey)
+
+// //clearInterval()
+
+// console.log('clearInterval()');
+
+// let numb = 0;
+
+// let setKeyInter = setInterval(() => {
+//     numb--
+//     console.log(numb);
+// }, 1000)
+
+// setTimeout(() => {
+//     clearInterval(setKeyInter)
+// }, 5000)
+
+
+
+//destructuring
+console.log('DESTRUCTURING');
+let person = {
+    firstName: 'Falonchi',
+    lastName: 'Fallonchiyev',
+    age: 100,
+    address: {
+        city: 'Tashkent',
+        postCode: '101011',
+        age: 200,
+        country: null
+    }
 }
 
-getPosts();
+const {
+    age,
+    lastName,
+    address: {city, postCode, age: cityAge, country = 'Uzbekistan'}
+} = person
+
+console.log(country);
+
+
+//rest(function) = operaton
+//ma'lumotlarni yig'ish uchun ishlatiladi
+
+console.log("rest(function) = operaton");
+function sumOfNumber(first, second, ...third) {
+    console.log(third);
+    // return first + second
+}
+
+console.log(sumOfNumber(1, 2,3,5,6,7));
+
+//EXAMPLE
+console.log('example of rest function');
+function name(param, params, ...paramt) {
+    return param + params + paramt.reduce((accumlator, item) => accumlator + item)
+}
+
+console.log(name(1,2,3,4,5,6,7,8,9,0,12));
+
+//spread
+//ma'lumotlarni yoyish uchun ishlatiladi
+//faqat object bn array ga ishlaydi
+console.log('spread');
+let numbers = [1,2,3,4,[89,43,543],5,6,7,8]
+
+console.log(numbers);
+console.log(...numbers);
+
+let [
+    first,
+    second,
+    ...nums
+] = numbers
+console.log();
+
+console.log(...person);
