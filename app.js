@@ -1,3 +1,5 @@
+// // import calculator from "./calculator.js";
+// import { calculator } from "./calculator.js";
 //FOReACH()
 
 let users = [
@@ -425,4 +427,147 @@ let [
 ] = numbers
 console.log();
 
-console.log(...person);
+// console.log(...person);
+
+
+
+
+//OPTIONAL CHAINING
+console.log('optional chaining');
+let people = [
+    {
+        firstName: 'Bob',
+        lastName: 'Brown',
+        hobbies: [
+            {
+                name: 'Football',
+                id: 1,
+            },
+            {
+                name: 'Karate',
+                id: 2,
+            }
+        ]
+    },
+    {
+        firstName: 'Tom',
+        lastName: 'Brown',
+        hobbies: [
+            {
+                name: 'Running',
+                id: 2,
+            }
+        ]
+    },
+    {
+        firstName: 'Daniel',
+        lastName: 'Brown',
+        hobbies: []
+    },
+]
+
+people.forEach(user => {
+    console.log(user.hobbies?.[0]?.name);
+})
+
+//Object keys()
+//       values
+//       entertainment()
+console.log('OBJECT.KEYS()');
+
+let car = {
+    name: 'BMW',
+    year: 2020,
+    price: '1500000$',
+    color: 'black',
+    model: 'X7',
+    number: '01|z777zz'
+}
+
+let carKey = Object.keys(car);
+console.log(carKey);
+
+
+console.log('OBJECT.VALUES()');
+
+let carValues = Object.values(car)
+console.log(carValues);
+
+
+console.log('OBJECT.ENTERIES()');
+
+let carProperties = Object.entries(car)
+console.log(carProperties);
+
+
+
+//MODULE 
+// console.log('MODULE');
+
+// console.log(calculator(1,2));
+
+
+//CRUD
+let mainUrl = 'https://64861ed1a795d24810b7ba35.mockapi.io/api';
+
+let FormVal = document.querySelector('.pForm')
+let elinput = document.querySelector('.pForm__elInput')
+let deskMenu = document.querySelector('.desk')
+
+//get
+async function getData() {
+ try{
+    let response = await fetch(`${mainUrl}/users`)
+    let data = await response.json();
+    deskMenu.innerHTML = ''
+    data.reverse().forEach(item => {
+        let deskMenuItem = document.createElement('li')
+        let deleteBtn = document.createElement('button')
+        deleteBtn.textContent = 'Delete'
+        deskMenuItem.textContent = item.name
+        deskMenuItem.setAttribute('data-id', item.id)
+        deskMenuItem.append(deleteBtn)
+        deskMenu.append(deskMenuItem)
+
+        deleteBtn.addEventListener('click', async () => {
+            let response = await fetch(`${mainUrl}/users/${deskMenuItem.dataset.id}`, {
+               method: 'DELETE',
+            })
+             if (response.status === 200) {
+                getData();
+             }else{
+                alert(response.statusText)
+             }
+        })
+    })
+ }catch(err){
+    console.log(err);
+ }
+}
+
+getData();
+
+
+//POST
+FormVal.addEventListener('submit',async (e)=> {
+    e.preventDefault();
+
+let info = {
+  name: elinput.value
+};
+
+let response = await fetch(`${mainUrl}/users`, {
+  headers: {
+      'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(info)
+});
+
+if(response.status === 201) {
+  getData()
+  FormVal.reset();
+}else {
+  alert(response.statusText);
+}
+})
