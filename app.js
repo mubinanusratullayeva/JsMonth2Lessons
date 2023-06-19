@@ -508,13 +508,13 @@ console.log(carProperties);
 
 
 //CRUD
-let mainUrl = 'https://64861ed1a795d24810b7ba35.mockapi.io/api';
+let mainUrl = 'https://jsonplaceholder.typicode.com';
 
 let FormVal = document.querySelector('.pForm')
 let elinput = document.querySelector('.pForm__elInput')
 let deskMenu = document.querySelector('.desk')
 
-//get
+//GET
 async function getData() {
  try{
     let response = await fetch(`${mainUrl}/users`)
@@ -529,6 +529,7 @@ async function getData() {
         deskMenuItem.append(deleteBtn)
         deskMenu.append(deskMenuItem)
 
+        //DELETE
         deleteBtn.addEventListener('click', async () => {
             let response = await fetch(`${mainUrl}/users/${deskMenuItem.dataset.id}`, {
                method: 'DELETE',
@@ -571,3 +572,42 @@ if(response.status === 201) {
   alert(response.statusText);
 }
 })
+
+
+
+//PROMISE
+
+let makePromise = new Promise(function (resolve, reject){
+    resolve("vada bajarildi")
+    // reject("vada bajarilmadi")
+})
+
+makePromise
+.then((res) => {
+    console.log(res);
+})
+.catch(error => console.log(error))
+.finally(() => {
+    console.log("Promise ishini tugatdi");
+})
+
+
+//XMLHTTPRequest(open, onload, response, finally)
+let baseUrl = 'https://jsonplaceholder.typicode.com'
+
+let myRequest = new XMLHttpRequest();
+
+myRequest.open('GET', `${baseUrl}/users`);
+
+myRequest.send();
+
+myRequest.onload = function() {
+    console.log(JSON.parse(myRequest.response));
+}
+
+myRequest.onerror = function() {
+    console.error(myRequest.response);
+}
+
+
+
