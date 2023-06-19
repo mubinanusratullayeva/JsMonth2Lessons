@@ -611,3 +611,70 @@ myRequest.onerror = function() {
 
 
 
+//CLASS
+console.log("CLASS");
+
+class Animal {
+    constructor(name, age, hasTail, isMale) {
+        this.animalName = name;
+        this.animalAge = age;
+        this.animalHasTail = hasTail;
+        this.animalIsMale = isMale;
+    }
+
+    //(static) otasidagi methodni o'chirib qo'yish
+   static voice() {
+        console.log("This is animal voice");
+    }
+
+}
+
+// Cat Animal dan meros oladi (extends)
+class Cat extends Animal {
+    constructor(name, age, hasTail, isMale, eyeColor) {
+        super(name, age, hasTail, isMale, eyeColor);
+
+        this.eyeColor = eyeColor
+    }
+
+    voice() {
+        console.log("Meow Meow");
+    }
+
+        //GETTER, SETTER
+        get getCatEyeColor() {
+            console.log(this.eyeColor);
+      }
+
+      set changeName(animalAnotherName) {
+        this.animalName = animalAnotherName;
+      }
+
+}
+
+// class Dog extends Animal {
+//   voice() {
+//     console.log("Wow Wow");
+//   }
+// }
+
+
+// const dog = new Dog("Puppy", 2, true)
+const cat = new Cat("Kitty", 1, true, false, "blue");
+
+// console.log(dog);
+// dog.voice()
+
+cat.voice()
+
+console.log(cat);
+
+cat.changeName = "Tommy"
+
+console.log(cat);
+
+cat.animalName = "Muwucha"
+
+console.log(cat);
+
+console.log(cat.getCatEyeColor)
