@@ -678,3 +678,91 @@ cat.animalName = "Muwucha"
 console.log(cat);
 
 console.log(cat.getCatEyeColor)
+
+
+//CLASS TASK
+console.log("class task");
+class Vehicle {
+    constructor(color, weight, speed, carName) {
+        this.color = color;
+        this.weight = weight;
+        this.speed = speed;
+        this.carName = carName;
+    }
+
+    #volume(carModel) {
+        console.log(`Vehicle volume...=> ${carModel}`);
+    }
+
+    getVehicleVolume(argu) {
+        return this.#volume(argu)
+    }
+}
+
+class Sedan extends Vehicle {
+    constructor(color, weight, speed, height, carName) {
+        super(color, weight, speed, carName);
+
+        this.height = height;
+    }
+}
+
+class Gruzavoy extends Vehicle {
+        constructor(color, weight, speed, loadSize, carName) {
+            super(color, weight, speed, carName);
+
+            this.loadSize = loadSize
+        }
+}
+
+let lacetti = new Sedan("red", 200, 220, 180, "Lacetti")
+let malibu = new Sedan("red", 200, 220, 180, "Malibu")
+let kamaz = new Gruzavoy("white", 300, 140, 2000, "Kamaz")
+
+console.log(lacetti);
+console.log(malibu);
+console.log(kamaz);
+
+malibu.getVehicleVolume("Malibu")
+
+//CLASS TASK BY FUNCTION() =^
+
+// function vehicle(color, weight, speed, carName) {
+//     this.color = color;
+//     this.weight = weight;
+//     this.speed = speed;
+//     this.carName = carName;
+
+//     function volume(carModel) {
+//         console.log(`Vehicle volume...=> ${carModel}`);
+//     }
+
+//     this.getVehicleVolume = function(argu) {
+//         return volume(argu)
+//     }
+// }
+
+// function sedan(color, weight, speed, height, carName) {
+//     vehicle.call(this, color, weight, speed, carName);
+
+//     this.height = height;
+// }
+
+// function gruzavoy(color, weight, speed, loadSize, carName) {
+//     vehicle.call(this, color, weight, speed, carName);
+
+//     this.loadSize = loadSize
+// }
+
+// let lacetti = new sedan("red", 200, 220, 180, "Lacetti")
+// let malibu = new sedan("red", 200, 220, 180, "Malibu")
+// let kamaz = new gruzavoy("white", 300, 140, 2000, "Kamaz")
+
+// console.log(lacetti);
+// console.log(malibu);
+// console.log(kamaz);
+
+// malibu.getVehicleVolume("Malibu")
+
+
+
